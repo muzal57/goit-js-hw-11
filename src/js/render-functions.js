@@ -1,10 +1,11 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
+const galleryContainer = document.querySelector('.gallery');
 
-const lightbox = new SimpleLightbox('.gallery a', {
+const loaderContainer = document.querySelector('.loader');
+
+let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
@@ -21,32 +22,39 @@ export function createGallery(images) {
         comments,
         downloads,
       }) => `
-      <li class="gallery-item">
-        <a href="${largeImageURL}">
-          <img src="${webformatURL}" alt="${tags}" />
-        </a>
-        <div class="info">
-          <p><b>Likes</b> ${likes}</p>
-          <p><b>Views</b> ${views}</p>
-          <p><b>Comments</b> ${comments}</p>
-          <p><b>Downloads</b> ${downloads}</p>
-        </div>
-      </li>`
+    <li class="gallery-item">
+  <a class="gallery-link" href="${largeImageURL}">
+    <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
+    <div class="info">
+      <p class="info-item"><b>Likes</b> <span>${likes}</span></p>
+      <p class="info-item"><b>Views</b> <span>${views}</span></p>
+      <p class="info-item"><b>Comments</b> <span>${comments}</span></p>
+      <p class="info-item"><b>Downloads</b> <span>${downloads}</span></p>
+    </div>
+  </a>
+</li>`
     )
     .join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+  galleryContainer.innerHTML = markup;
   lightbox.refresh();
 }
 
-export function clearGallery() {
-  gallery.innerHTML = '';
-}
-
 export function showLoader() {
-  loader.classList.add('is-visible');
+  if (loaderContainer) {
+    loaderContainer.classList.remove('is-hidden');
+  }
 }
 
 export function hideLoader() {
-  loader.classList.remove('is-visible');
+  if (loaderContainer) {
+    loaderContainer.classList.add('is-hidden');
+  }
+}
+
+export function clearGallery() {
+  const gallery = document.querySelector('.gallery');
+  if (gallery) {
+    gallery.innerHTML = '';
+  }
 }
