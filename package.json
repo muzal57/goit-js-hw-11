@@ -1,11 +1,11 @@
 {
-  "name": "vanilla-app-template",
+  "name": "goit-js-hw-11",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/vanilla-app-template/",
+    "build": "vite build --base=/goit-js-hw-11/",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -19,5 +19,16 @@
   "dependencies": {
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
-  }
+  },
+  "description": "Bu proje Vite kullanılarak oluşturulmuştur. Ek özelliklerin tanınması ve özelleştirilmesi için [belgelere bakın](https://vitejs.dev/).",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muzal57/goit-js-hw-11.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/muzal57/goit-js-hw-11/issues"
+  },
+  "homepage": "https://github.com/muzal57/goit-js-hw-11#readme"
 }
